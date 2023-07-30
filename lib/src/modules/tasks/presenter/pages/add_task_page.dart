@@ -29,7 +29,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       });
     } else if (state is SucessAddTaskState){
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _showMyDialog(title: "Success", message: 'Tarefa adicionada com sucesso');
+        _showMyDialog(title: "Success", message: 'Tarefa adicionada com sucesso', store: store);
       });
     }
 
