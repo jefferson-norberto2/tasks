@@ -29,7 +29,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
       });
     } else if (state is SucessAddTaskState){
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _showMyDialog(title: "Error", message: 'Tarefa adicionada com sucesso');
+        _showMyDialog(title: "Success", message: 'Tarefa adicionada com sucesso');
       });
     }
 
@@ -76,7 +76,12 @@ class _AddTaskPageState extends State<AddTaskPage> {
     );
   }
 
-  void _showMyDialog({required String title, required String message, bool isAError = false}) {
+  void onExit(AddTaskStore store){
+    store.onExitListTasksPage();
+    Modular.to.pop();
+  }
+
+  void _showMyDialog({required String title, required String message, bool isAError = false, AddTaskStore? store}) {
     showDialog(
       context: context,
       builder: (context) {
@@ -87,8 +92,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                if (!isAError) {
-                  Modular.to.pop();
+                if (isAError == false){
+                  onExit(store!);
                 }
               },
               child: const Text('OK'),
