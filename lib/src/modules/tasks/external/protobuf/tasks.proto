@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message Task{
+    string id = 1;
+    string task = 2;
+    string user_id = 3;
+}
+
+message User{
+    string id = 1;
+    string name = 2;
+    repeated Task tasks = 3;
+}
