@@ -13,7 +13,7 @@ class UserDatasource implements IUserDatasource {
   @override
   Future<User> getUser(User user) async {
     try{
-      const url = 'http://localhost:5000/';
+      const url = 'http://localhost:5001/';
       final uri = Uri.parse('$url/login');
       final body = UserAdapter.toProtoBuffer(user);
       final request = await httpClient.post(uri, body: body);
@@ -27,7 +27,7 @@ class UserDatasource implements IUserDatasource {
   @override
   Future<bool> sendUser(User user) async {
     try{
-      const url = 'http://localhost:5000/';
+      const url = 'http://localhost:5001/';
       final uri = Uri.parse('$url/sign_up_user');
       final body = UserAdapter.toProtoBuffer(user);
       final request = await httpClient.post(uri, body: body);
