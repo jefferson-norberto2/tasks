@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                 fixedSize: const Size(200, 40)
               ),
               onPressed: () {
-                store.login(User(name: editTextName.text, password: editTextPassword.text));
+                store.loginWSC(User(name: editTextName.text, password: editTextPassword.text));
               },
               child: const Text('Entrar'),
             ),

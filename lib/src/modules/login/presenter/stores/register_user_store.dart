@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'package:tasks/src/modules/login/domain/usecases/send_user.dart';
+import 'package:tasks/src/modules/login/domain/usecases/send_user_wsc.dart';
 import 'package:tasks/src/modules/login/presenter/states/register_user_state.dart';
 import '../../domain/entities/user.dart';
 
 class RegisterUserStore extends ValueNotifier<IRegisterUserState>{
-  final ISendUser _sendUser;
+  final ISendUserWsc _sendUser;
 
   RegisterUserStore(this._sendUser) : super(EmptyRegisterUserState());
 
@@ -13,13 +13,16 @@ class RegisterUserStore extends ValueNotifier<IRegisterUserState>{
 
   Future<void> registerUser(User user) async {
     emit(LoadingRegisterUserState());
-    final result = await _sendUser.call(user);
     
-    if(result.$2){
-      emit(SucessRegisterUserState());
-    } else {
-      emit(ErrorRegisterUserState(result.$1.message));
-    } 
+    if(!_sendUser.call(user, (data) {
+      if (data == 'User not found') {
+        emit(ErrorRegisterUserState(data));
+      }else {
+        emit(SucessRegisterUserState());
+      }
+    })){
+      emit(ErrorRegisterUserState('User or password empty'));
+    }
   }
 
   Future<void> onExiteRegisterUser() async {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:tasks/src/modules/login/login_module.dart';
+import 'package:tasks/src/modules/communication/communication_module.dart';
 
 void main() {
-  runApp(ModularApp(module: LoginModule(), child: const MyApp()));
+  runApp(ModularApp(module: CommunicationModule(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
