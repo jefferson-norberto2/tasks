@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:tasks/src/modules/tasks/presenter/states/add_task_state.dart';
+import '../states/add_task_state.dart';
 import '../../domain/entities/task.dart';
 import '../stores/add_task_store.dart';
 

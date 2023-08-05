@@ -1,15 +1,13 @@
 import 'dart:typed_data';
-
-import 'package:tasks/src/modules/tasks/domain/entities/user.dart' as domain;
-import 'package:tasks/src/modules/tasks/external/protobuf/tasks.pb.dart' as proto;
-
-import '../../domain/entities/task.dart';
+import '../../domain/entities/user.dart' as domain;
+import '../protobuf/tasks.pb.dart' as proto;
+import '../../domain/entities/task.dart' as entities;
 
 class UserAdapter{
   static domain.User fromProto(Uint8List data){
     final user = proto.User();
     user.mergeFromBuffer(data);
-    final List<Task> list = user.tasks.map((task) => Task(
+    final List<entities.Task> list = user.tasks.map((task) => entities.Task(
       id: task.id,
       task: task.task,
       userId: task.userId,

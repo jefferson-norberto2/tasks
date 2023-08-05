@@ -7,7 +7,7 @@ import 'package:tasks/src/modules/login/infra/datasources/user_datasource.dart';
 import 'package:tasks/src/modules/login/presenter/pages/login_page.dart';
 import 'package:tasks/src/modules/login/presenter/pages/register_user_page.dart';
 import 'package:tasks/src/modules/login/presenter/stores/register_user_store.dart';
-import '../tasks/tasks_module.dart';
+import '../home/tasks/tasks_module.dart';
 import 'domain/repositories/user_repository.dart';
 import 'infra/repositories/user_repository.dart';
 import 'presenter/stores/login_store.dart';

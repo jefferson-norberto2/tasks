@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tasks/src/modules/tasks/domain/usecase/send_task.dart';
-import 'package:tasks/src/modules/tasks/presenter/states/add_task_state.dart';
-
+import '../../domain/usecase/send_task.dart';
+import '../states/add_task_state.dart';
 import '../../domain/entities/task.dart';
 
 class AddTaskStore extends ValueNotifier<IAddTaskState> {

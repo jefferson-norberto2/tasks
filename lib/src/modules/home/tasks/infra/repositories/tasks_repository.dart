@@ -1,6 +1,6 @@
-import 'package:tasks/src/modules/tasks/domain/repositories/tasks_repository.dart';
 import '../../domain/entities/task.dart';
 import '../../domain/erros/erros.dart';
+import '../../domain/repositories/tasks_repository.dart';
 import '../datasources/tasks_datasource.dart';
 
 class TasksRepository extends ITasksRepository{

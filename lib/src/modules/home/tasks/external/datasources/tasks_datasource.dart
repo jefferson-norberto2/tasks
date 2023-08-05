@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:tasks/src/modules/tasks/domain/entities/task.dart';
-import 'package:tasks/src/modules/tasks/domain/erros/erros.dart';
-import 'package:tasks/src/modules/tasks/external/adapters/task_adapter.dart';
-import 'package:tasks/src/modules/tasks/infra/datasources/tasks_datasource.dart';
+import '../../domain/entities/task.dart' show Task;
+import '../../domain/erros/erros.dart' show TasksDatasourceErros;
+import '../adapters/task_adapter.dart' show TaskAdapter;
+import '../../infra/datasources/tasks_datasource.dart' show ITasksDatasource;
 import 'package:http/http.dart' as http;
-import '../adapters/user_adapter.dart';
+import '../adapters/user_adapter.dart' show UserAdapter;
 
 class TasksDatasource implements ITasksDatasource{
   final http.Client httpClient;
@@ -23,7 +23,6 @@ class TasksDatasource implements ITasksDatasource{
     } catch (e, s) {
       throw TasksDatasourceErros('Problem connecting to the server ${e.toString()}', s);
     }
-
   }
 
   @override

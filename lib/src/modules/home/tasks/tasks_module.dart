@@ -1,14 +1,13 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:http/http.dart' as http;
-import 'package:tasks/src/modules/tasks/domain/repositories/tasks_repository.dart';
-import 'package:tasks/src/modules/tasks/domain/usecase/get_tasks.dart';
-import 'package:tasks/src/modules/tasks/external/datasources/tasks_datasource.dart';
-import 'package:tasks/src/modules/tasks/infra/datasources/tasks_datasource.dart';
-import 'package:tasks/src/modules/tasks/infra/repositories/tasks_repository.dart';
-import 'package:tasks/src/modules/tasks/presenter/pages/add_task_page.dart';
-import 'package:tasks/src/modules/tasks/presenter/stores/add_task_store.dart';
-import 'package:tasks/src/modules/tasks/presenter/stores/list_tasks_store.dart';
-
+import 'domain/repositories/tasks_repository.dart';
+import 'domain/usecase/get_tasks.dart';
+import 'external/datasources/tasks_datasource.dart';
+import 'infra/datasources/tasks_datasource.dart';
+import 'infra/repositories/tasks_repository.dart';
+import 'presenter/pages/add_task_page.dart';
+import 'presenter/stores/add_task_store.dart';
+import 'presenter/stores/list_tasks_store.dart';
 import 'domain/usecase/send_task.dart';
 import 'presenter/pages/list_tasks_page.dart';
 

@@ -1,6 +1,5 @@
-import 'package:tasks/src/modules/tasks/domain/erros/erros.dart';
-
 import '../entities/task.dart';
+import '../erros/erros.dart';
 import '../repositories/tasks_repository.dart';
 
 abstract class IGetTasks{

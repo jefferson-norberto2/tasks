@@ -1,4 +1,4 @@
-import 'package:tasks/src/modules/tasks/domain/entities/task.dart';
+import 'task.dart';
 
 class User{
   final String id;
