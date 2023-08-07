@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tasks/src/modules/tasks/domain/usecase/get_tasks.dart';
-import 'package:tasks/src/modules/tasks/presenter/states/list_tasks_state.dart';
+import '../../domain/usecase/get_tasks.dart';
+import '../states/list_tasks_state.dart';
 
 class ListTasksStore extends ValueNotifier<IListTasksState> {
   final IGetTasks _getTasks;

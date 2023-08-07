@@ -1,8 +1,6 @@
 import 'dart:typed_data';
-
-import 'package:tasks/src/modules/tasks/domain/entities/user.dart' as domain;
-import 'package:tasks/src/modules/tasks/infra/protobuf/tasks.pb.dart' as proto;
-
+import '../../domain/entities/user.dart' as domain;
+import '../protobuf/tasks.pb.dart' as proto;
 import '../../domain/entities/task.dart';
 
 class UserAdapter{

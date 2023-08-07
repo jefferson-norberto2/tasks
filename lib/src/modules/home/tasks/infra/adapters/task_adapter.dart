@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import '../../domain/entities/task.dart' as domain;
 import '../protobuf/tasks.pb.dart' as proto;
 

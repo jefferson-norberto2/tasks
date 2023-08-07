@@ -7,7 +7,7 @@ import 'infra/datasources/get_user_datasource.dart';
 import 'presenter/pages/login_page.dart';
 import 'presenter/pages/register_user_page.dart';
 import 'presenter/stores/register_user_store.dart';
-import '../tasks/tasks_module.dart';
+import '../home/tasks/tasks_module.dart';
 import 'domain/repositories/user_repository.dart';
 import 'external/datasources/send_user_datasource.dart';
 import 'infra/datasources/send_user_datasource.dart';

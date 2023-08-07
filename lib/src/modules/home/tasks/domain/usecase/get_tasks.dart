@@ -1,5 +1,4 @@
-import 'package:tasks/src/modules/tasks/domain/erros/erros.dart';
-
+import '../erros/erros.dart';
 import '../entities/task.dart';
 import '../repositories/tasks_repository.dart';
 

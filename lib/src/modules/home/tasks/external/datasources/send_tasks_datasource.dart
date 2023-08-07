@@ -1,5 +1,5 @@
 import 'dart:typed_data';
-import 'package:tasks/src/modules/tasks/domain/erros/erros.dart';
+import '../../domain/erros/erros.dart';
 import 'package:http/http.dart' as http;
 import '../../infra/datasources/send_tasks_datasource.dart';
 
