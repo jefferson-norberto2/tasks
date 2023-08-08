@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-
+import 'package:tasks/src/modules/home/counter/presenter/page/counter_page.dart';
 import '../../login/domain/entities/user.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
             title: const Text('Perfil'),
             onTap: () => Modular.to.navigate('/home_module/perfil_module/', arguments: widget.user),
           ),
+          const CounterPage()
         ],
       ),
     );

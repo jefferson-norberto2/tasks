@@ -40,7 +40,6 @@ class LoginModule extends Module{
   List<ModularRoute> get routes => [
     ChildRoute('/', child: (context, args) => const LoginPage()),
     ChildRoute('/register_user/', child: (context, args) => const RegisterUserPage()),
-    // ModuleRoute('/task_module/', module: TasksModule()),
     ModuleRoute('/home_module/', module: HomeModule()),
   ];
 }
