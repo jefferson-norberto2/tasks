@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:tasks/src/modules/home/home_module.dart';
 import 'domain/usecases/get_user.dart';
 import 'package:http/http.dart' as http;
 import 'domain/usecases/send_user.dart';
@@ -7,7 +8,6 @@ import 'infra/datasources/get_user_datasource.dart';
 import 'presenter/pages/login_page.dart';
 import 'presenter/pages/register_user_page.dart';
 import 'presenter/stores/register_user_store.dart';
-import '../home/tasks/tasks_module.dart';
 import 'domain/repositories/user_repository.dart';
 import 'external/datasources/send_user_datasource.dart';
 import 'infra/datasources/send_user_datasource.dart';
@@ -40,6 +40,7 @@ class LoginModule extends Module{
   List<ModularRoute> get routes => [
     ChildRoute('/', child: (context, args) => const LoginPage()),
     ChildRoute('/register_user/', child: (context, args) => const RegisterUserPage()),
-    ModuleRoute('/task_module/', module: TasksModule()),
+    // ModuleRoute('/task_module/', module: TasksModule()),
+    ModuleRoute('/home_module/', module: HomeModule()),
   ];
 }

@@ -43,7 +43,7 @@ class TasksModule extends Module {
   @override
   final List<ModularRoute> routes = [
         ChildRoute('/', child: (context, args) => ListTasksPage(user: args.data)),
-        ChildRoute('/add_task', child: ((context, args) => AddTaskPage(idUser: args.data)))
+        ChildRoute('/add_task/', child: ((context, args) => AddTaskPage(idUser: args.data)))
 
   ];
 }
