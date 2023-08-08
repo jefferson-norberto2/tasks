@@ -5,21 +5,19 @@ import 'package:tasks/src/modules/home/counter/presenter/state/counter_state.dar
 class CounterStore extends ValueNotifier<ICounterState> {
   final io.Socket socket;
 
-  CounterStore(this.socket) : super(EmptyCounterState());
+  CounterStore(this.socket) : super(EmptyCounterState()){
+    connectAndListen();
+  }
 
   void emit(ICounterState state) => value = state;
 
-//STEP2: Add this function in main function in main.dart file and add incoming data to the stream
-void connectAndListen(int idUser){
-    socket.onConnect((_) {
-     print('connect');
-     
+  void connectAndListen(){
+    socket.onConnect((data){
+      print('connect');
     });
-    socket.emit('update', idUser);
-    //When an event recieved from server, data is added to the stream
-    socket.on('update', (data) {
+    socket.on('update_response', (data) {
       print(data);
-      emit(data);
+      emit(SucessCounterState(int.parse(data)));
     });
     socket.onDisconnect((_) => print('disconnect'));
 

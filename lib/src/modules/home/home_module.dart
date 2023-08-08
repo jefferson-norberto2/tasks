@@ -8,9 +8,9 @@ import 'package:socket_io_client/socket_io_client.dart' as io;
 class HomeModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.singleton((i) => io.io('http://localhost:5000/',
-      io.OptionBuilder().setTransports(['websocket']).build())),
     
+    Bind.singleton((i) => io.io('http://localhost:5000/counter',
+      io.OptionBuilder().setTransports(['websocket']).build())),
     Bind.singleton((i) => CounterStore(i()))
   ];
 

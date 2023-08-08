@@ -24,12 +24,20 @@ class _CounterPageState extends State<CounterPage> {
         
       });
     } else if (state is SucessCounterState){
-      WidgetsBinding.instance.addPostFrameCallback((_) {
         counter = state.value;
-      });
     }
 
-    store.connectAndListen(15);
-    return Text('Counter $counter');
+    // store.connectAndListen(15);
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text('Counter $counter'),
+        ElevatedButton(
+          onPressed: () => store.socket.emit('update', 15),
+          child: const Text('Increment'),
+        ),
+      ],
+    );
   }
 }
