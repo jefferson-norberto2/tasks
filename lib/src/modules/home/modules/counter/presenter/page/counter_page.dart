@@ -25,15 +25,7 @@ class _CounterPageState extends State<CounterPage> {
   Widget build(BuildContext context) {
     final store = context.watch<CounterStore>();
     final state = store.value;
-    int counter = 0;
-
-    if (state is ErrorCounterState){
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        
-      });
-    } else if (state is SucessCounterState){
-        counter = state.value;
-    }
+    int counter = state is SucessCounterState ? state.value : 0;
 
     return Column(
       mainAxisSize: MainAxisSize.min,

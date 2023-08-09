@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../states/list_tasks_state.dart';
 import '../stores/list_tasks_store.dart';
 
-import '../../../../login/domain/entities/user.dart';
+import '../../../../../login/domain/entities/user.dart';
 
 class ListTasksPage extends StatefulWidget {
   final User user;
