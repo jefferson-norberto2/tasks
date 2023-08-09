@@ -6,20 +6,19 @@ class CounterStore extends ValueNotifier<ICounterState> {
   final io.Socket socket;
 
   CounterStore(this.socket) : super(EmptyCounterState()){
-    connectAndListen();
+    listenCounter();
   }
 
   void emit(ICounterState state) => value = state;
 
-  void connectAndListen(){
-    socket.onConnect((data){
-      print('connect');
-    });
+  void fetchCounter(int value) {
+    socket.emit('update_request', value);
+  }
+
+  void listenCounter(){
     socket.on('update_response', (data) {
-      print(data);
+      print('recebi o contador $data');
       emit(SucessCounterState(int.parse(data)));
     });
-    socket.onDisconnect((_) => print('disconnect'));
-
   }
 }

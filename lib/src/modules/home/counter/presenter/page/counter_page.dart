@@ -14,6 +14,14 @@ class CounterPage extends StatefulWidget {
 class _CounterPageState extends State<CounterPage> {
 
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<CounterStore>().fetchCounter(15);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final store = context.watch<CounterStore>();
     final state = store.value;
@@ -27,16 +35,10 @@ class _CounterPageState extends State<CounterPage> {
         counter = state.value;
     }
 
-    // store.connectAndListen(15);
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text('Counter $counter'),
-        ElevatedButton(
-          onPressed: () => store.socket.emit('update', 15),
-          child: const Text('Increment'),
-        ),
       ],
     );
   }
