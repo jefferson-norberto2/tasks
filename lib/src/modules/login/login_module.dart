@@ -15,31 +15,31 @@ import 'infra/repositories/user_repository.dart';
 import 'presenter/stores/login_store.dart';
 
 class LoginModule extends Module{
-  @override
-  List<Bind<Object>> get binds => [
-    //utils
-    Bind.factory((i) => http.Client()),
-    
-    //datasources
-    Bind.factory<IGetUserDatasource>((i) => GetUserDatasource(i())),
-    Bind.factory<ISendUserDatasource>((i) => SendUserDatasource(i())),
-
-    //repositories
-    Bind.factory<IUserRepository>((i) => UserRepository(i(), i())),
-    
-    //usecases
-    Bind.factory((i) => GetUser(i())),
-    Bind.factory((i) => SendUser(i())),
-    
-    //stores
-    Bind.singleton((i) => LoginStore(i())),
-    Bind.singleton((i) => RegisterUserStore(i()))
-  ];
 
   @override
-  List<ModularRoute> get routes => [
-    ChildRoute('/', child: (context, args) => const LoginPage()),
-    ChildRoute('/register_user/', child: (context, args) => const RegisterUserPage()),
-    ModuleRoute('/home_module/', module: HomeModule()),
-  ];
+  void binds(i) {
+    //Utils
+    i.add(http.Client.new);
+
+    //Datasources
+    i.add<IGetUserDatasource>(GetUserDatasource.new);
+    i.add<ISendUserDatasource>(SendUserDatasource.new);
+
+    //Repositories
+    i.add<IUserRepository>(UserRepository.new);
+
+    //UseCases
+    i.add(GetUser.new);
+    i.add(SendUser.new);
+
+    //Stores
+    i.addSingleton(LoginStore.new);
+    i.addSingleton(RegisterUserStore.new);
+  }
+
+  @override
+  void routes(r) {
+    r.child('/', child: (context) => const LoginPage());
+    r.child('/register_user/', child: (context) => const RegisterUserPage());
+    r.module('/home_module/', module: HomeModule());  }
 }
