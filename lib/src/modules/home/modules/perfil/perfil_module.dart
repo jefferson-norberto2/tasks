@@ -4,11 +4,11 @@ import 'presenter/pages/perfil_page.dart';
 
 class PerfilModule extends Module {
   @override
-  final List<Bind> binds = [
-  ];
+  void binds(i) {
+  }
 
   @override
-  final List<ModularRoute> routes = [
-    ChildRoute(Modular.initialRoute, child: (_, args) => PerfilPage(data: args.data)),
-  ];
+  void routes(r) {
+    r.child('/', child: (context) => PerfilPage(data: r.args.data));
+  }
 }

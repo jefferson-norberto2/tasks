@@ -29,8 +29,8 @@ class LoginModule extends Module{
     i.add<IUserRepository>(UserRepository.new);
 
     //UseCases
-    i.add(GetUser.new);
-    i.add(SendUser.new);
+    i.add<IGetUser>(GetUser.new);
+    i.add<ISendUser>(SendUser.new);
 
     //Stores
     i.addSingleton(LoginStore.new);

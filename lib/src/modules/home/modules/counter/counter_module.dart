@@ -4,10 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class CounterModule extends Module {
   @override
-  final List<Bind> binds = [
-  ];
+  void binds(i) {}
 
   @override
-  final List<ModularRoute> routes = [
-  ];
+  void routes(r) {}
 }

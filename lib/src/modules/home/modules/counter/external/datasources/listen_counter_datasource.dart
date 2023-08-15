@@ -1,17 +1,17 @@
-import 'package:socket_io_client/socket_io_client.dart' as io;
+import 'package:tasks/src/modules/home/modules/counter/my_socket.dart';
 
 abstract class IListenCounterDatasource{
   void listenCounter(Function(int) callback);
 }
 
 class ListenCounterDatasource implements IListenCounterDatasource{
-  final io.Socket socket;
+  final MySocket mySocket;
 
-  ListenCounterDatasource(this.socket);
+  ListenCounterDatasource(this.mySocket);
 
   @override
   void listenCounter(Function(int) callback){
-    socket.on('update_response', (data) {
+    mySocket.socket.on('update_response', (data) {
       callback(int.parse(data));
     });
   }
