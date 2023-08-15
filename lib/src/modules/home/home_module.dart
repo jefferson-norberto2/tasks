@@ -1,11 +1,11 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:tasks/src/modules/home/modules/counter/external/datasources/fecth_counter_datasource.dart';
-import 'package:tasks/src/modules/home/modules/counter/external/datasources/listen_counter_datasource.dart';
-import 'package:tasks/src/modules/home/modules/counter/my_socket.dart';
-import 'package:tasks/src/modules/home/modules/counter/presenter/store/counter_store.dart';
-import 'package:tasks/src/modules/home/modules/tasks/tasks_module.dart';
+import 'package:tasks/src/modules/home/submodules/counter/external/datasources/fecth_counter_datasource.dart';
+import 'package:tasks/src/modules/home/submodules/counter/external/datasources/listen_counter_datasource.dart';
+import 'package:tasks/src/modules/home/submodules/counter/my_socket.dart';
+import 'package:tasks/src/modules/home/submodules/counter/presenter/store/counter_store.dart';
+import 'package:tasks/src/modules/home/submodules/tasks/tasks_module.dart';
 import 'presenter/pages/home_page.dart';
-import 'modules/perfil/perfil_module.dart';
+import 'submodules/perfil/perfil_module.dart';
 import 'presenter/stores/home_store.dart';
 
 class HomeModule extends Module {

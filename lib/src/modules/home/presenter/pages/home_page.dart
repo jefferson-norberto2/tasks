@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:tasks/src/modules/home/modules/counter/presenter/page/counter_page.dart';
+import 'package:tasks/src/modules/home/submodules/counter/presenter/page/counter_page.dart';
 import '../../../login/domain/entities/user.dart';
 
 class HomePage extends StatefulWidget {
