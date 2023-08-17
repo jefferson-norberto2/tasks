@@ -38,6 +38,12 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Bem-vindo ${widget.user.name}"),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () => Modular.to.pop(),
+            )
+          ],
         ),
       body: Row(
         children: [

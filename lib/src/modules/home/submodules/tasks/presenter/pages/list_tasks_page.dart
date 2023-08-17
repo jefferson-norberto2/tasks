@@ -19,6 +19,7 @@ class _ListTasksPageState extends State<ListTasksPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      print('User ${widget.user.id}');
       context.read<ListTasksStore>().listTasks(widget.user.id!);    
     });
     
@@ -32,12 +33,13 @@ class _ListTasksPageState extends State<ListTasksPage> {
 
     return SafeArea(child: Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         actions: [
           IconButton(
             onPressed: () {
               Modular.to.pushNamed('/home_module/task_module/add_task/', arguments: widget.user.id!).then((value) => context.read<ListTasksStore>().listTasks(widget.user.id!));
             },
-            icon: const Icon(Icons.add_chart_sharp),
+            icon: const Icon(Icons.add_chart_sharp, color: Colors.black),
           ),
         ],
       ),

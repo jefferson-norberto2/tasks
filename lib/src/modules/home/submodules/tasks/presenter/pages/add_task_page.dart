@@ -37,7 +37,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-        title: const Text('Adicionar tarefa'),
+          backgroundColor: Colors.white,
+        title: const Text('Adicionar tarefa', style: TextStyle(color: Colors.black),),
         ),
         body: Column(
           children: [

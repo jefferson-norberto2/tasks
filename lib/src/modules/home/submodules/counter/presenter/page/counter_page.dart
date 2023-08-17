@@ -12,12 +12,18 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
+  bool init = true;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<CounterStore>().fetchCounter(15);
+      context.read<CounterStore>().fetchCounter(21);
+      if(init){
+        setState(() {
+          init = false;
+        });
+      }
     });
   }
 
