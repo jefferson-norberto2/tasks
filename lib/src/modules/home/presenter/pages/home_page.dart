@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
             title: const Text('Perfil'),
             onTap: () => Modular.to.navigate('/home_module/perfil_module/', arguments: widget.user),
           ),
-          const CounterPage()
+          CounterPage(userId: widget.user.id!)
         ],
       ),
     );

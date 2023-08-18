@@ -4,8 +4,8 @@ import '../state/counter_state.dart';
 import '../store/counter_store.dart';
 
 class CounterPage extends StatefulWidget {
-
-  const CounterPage({super.key});
+  final String userId;
+  const CounterPage({super.key, required this.userId});
 
   @override
   State<CounterPage> createState() => _CounterPageState();
@@ -18,12 +18,7 @@ class _CounterPageState extends State<CounterPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<CounterStore>().fetchCounter(21);
-      if(init){
-        setState(() {
-          init = false;
-        });
-      }
+      context.read<CounterStore>().fetchCounter(int.parse(widget.userId));
     });
   }
 

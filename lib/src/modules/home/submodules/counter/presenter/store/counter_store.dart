@@ -19,8 +19,10 @@ class CounterStore extends ValueNotifier<ICounterState> {
   }
 
   void listenCounter(){
-    listenCounterDatasource.listenCounter((totalTasks) {
-      emit(SucessCounterState(totalTasks));
-    });
+    listenCounterDatasource.listenCounter(totalTasks);
+  }
+
+  void totalTasks(int totalTasks){
+    emit(SucessCounterState(totalTasks));
   }
 }
