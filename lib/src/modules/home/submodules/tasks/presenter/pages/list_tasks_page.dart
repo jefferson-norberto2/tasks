@@ -19,7 +19,6 @@ class _ListTasksPageState extends State<ListTasksPage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      print('User ${widget.user.id}');
       context.read<ListTasksStore>().listTasks(widget.user.id!);    
     });
     
