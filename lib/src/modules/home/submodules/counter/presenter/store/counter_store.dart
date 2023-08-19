@@ -14,7 +14,6 @@ class CounterStore extends ValueNotifier<ICounterState> {
   void emit(ICounterState state) => value = state;
 
   void fetchCounter(int userId) {
-    emit(LoadingCounterState());
     fetchCounterDatasource.fetchCounter(userId);
   }
 
