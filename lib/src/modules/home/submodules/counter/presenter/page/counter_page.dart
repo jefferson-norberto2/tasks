@@ -22,6 +22,14 @@ class _CounterPageState extends State<CounterPage> {
   }
 
   @override
+  void dispose() {
+    final store = context.read<CounterStore>();
+    store.listenCounterDatasource.dispose();
+    debugPrint('dispose counter');
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {    
     final store = context.watch<CounterStore>();
     final state = store.value;

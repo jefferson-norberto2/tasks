@@ -6,7 +6,6 @@ import 'package:tasks/src/modules/home/submodules/counter/presenter/store/counte
 import 'package:tasks/src/modules/home/submodules/tasks/tasks_module.dart';
 import 'presenter/pages/home_page.dart';
 import 'submodules/perfil/perfil_module.dart';
-import 'presenter/stores/home_store.dart';
 
 class HomeModule extends Module {
   @override
@@ -20,7 +19,6 @@ class HomeModule extends Module {
 
     //stores
     i.addSingleton(CounterStore.new);
-    i.addSingleton(HomeStore.new);
   }
 
   @override

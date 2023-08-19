@@ -2,6 +2,7 @@ import 'package:tasks/src/modules/home/submodules/counter/my_socket.dart';
 
 abstract class IListenCounterDatasource{
   void listenCounter(Function(int) callback);
+  void dispose();
 }
 
 class ListenCounterDatasource implements IListenCounterDatasource{
@@ -14,5 +15,11 @@ class ListenCounterDatasource implements IListenCounterDatasource{
     mySocket.socket.on('update_response', (data) {
       callback(int.parse(data));
     });
+  }
+
+  @override
+  void dispose() {
+    mySocket.socket.off('update_response');
+    mySocket.socket.disconnect();
   }
 }

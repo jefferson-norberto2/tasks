@@ -15,12 +15,17 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    Modular.to.pushNamed('/home_module/task_module/', arguments: widget.user);
+  }
+
+  @override
+  void dispose() {
+    debugPrint('dispose home');
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    Modular.to.navigate('/home_module/task_module/', arguments: widget.user);
-
     final leading = SizedBox(
       width: MediaQuery.of(context).size.width * 0.3,
       child: Column(
@@ -28,11 +33,11 @@ class _HomePageState extends State<HomePage> {
         children: [
           ListTile(
             title: const Text('Tarefas'),
-            onTap: () => Modular.to.navigate('/home_module/task_module/', arguments: widget.user),
+            onTap: () => Modular.to.pushReplacementNamed('/home_module/task_module/', arguments: widget.user),
           ),
           ListTile(
             title: const Text('Perfil'),
-            onTap: () => Modular.to.navigate('/home_module/perfil_module/', arguments: widget.user),
+            onTap: () => Modular.to.pushReplacementNamed('/home_module/perfil_module/', arguments: widget.user),
           ),
           CounterPage(userId: widget.user.id!)
         ],
@@ -42,6 +47,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text("Bem-vindo ${widget.user.name}"),
           actions: [
             IconButton(
