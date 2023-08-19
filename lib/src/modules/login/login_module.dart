@@ -41,5 +41,6 @@ class LoginModule extends Module{
   void routes(r) {
     r.child('/', child: (context) => const LoginPage());
     r.child('/register_user/', child: (context) => const RegisterUserPage());
-    r.module('/home_module/', module: HomeModule());  }
+    r.module('/home_module/', module: HomeModule());  
+    }
 }
