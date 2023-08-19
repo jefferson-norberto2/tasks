@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
       });
     } else if (state is SucessLoginState){
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        Modular.to.pushNamed('/task_module/', arguments: state.user);
+        Modular.to.pushNamed('/home_module/', arguments: state.user);
       });
     }
 

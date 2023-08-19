@@ -18,32 +18,32 @@ import 'presenter/stores/add_task_store.dart';
 import 'presenter/stores/list_tasks_store.dart';
 
 class TasksModule extends Module {
-  
-  @override
-  final List<Bind> binds = [
+
+   @override
+  void binds(i) {
     //utils
-    Bind.factory((i) => http.Client()),
-    
+    i.add(http.Client.new);
+
     //datasources
-    Bind.factory<IGetTasksDatasource>((i) => GetTasksDatasource(i())),
-    Bind.factory<ISendTasksDatasource>((i) => SendTasksDatasource(i())),
-    
+    i.add<IGetTasksDatasource>(GetTasksDatasource.new);
+    i.add<ISendTasksDatasource>(SendTasksDatasource.new);
+
     //repositories
-    Bind.factory<ITasksRepository>((i) => TasksRepository(i(), i())),
-    
+    i.add<ITasksRepository>(TasksRepository.new);
+
     //usecases
-    Bind.factory((i) => GetTasks(i())),
-    Bind.factory((i) => SendTask(i())),
-    
+    i.add<IGetTasks>(GetTasks.new);
+    i.add<ISendTask>(SendTask.new);
+
     //stores
-    Bind.singleton((i) => ListTasksStore(i())),
-    Bind.singleton((i) => AddTaskStore(i()))
-  ];
+    i.addSingleton(ListTasksStore.new);
+    i.addSingleton(AddTaskStore.new);
+  }
 
   @override
-  final List<ModularRoute> routes = [
-        ChildRoute('/', child: (context, args) => ListTasksPage(user: args.data)),
-        ChildRoute('/add_task', child: ((context, args) => AddTaskPage(idUser: args.data)))
-
-  ];
+  void routes(r) {
+    r.child('/', child: (context) => ListTasksPage(user: r.args.data));
+    r.child('/add_task/', child: (context) => AddTaskPage(idUser: r.args.data));
+  }
+  
 }

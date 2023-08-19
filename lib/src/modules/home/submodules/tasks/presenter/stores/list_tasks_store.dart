@@ -7,7 +7,9 @@ class ListTasksStore extends ValueNotifier<IListTasksState> {
   
   ListTasksStore(this._getTasks) : super(EmptyListTasksState());
 
-  void emit(IListTasksState state) => value = state;
+  void emit(IListTasksState state) { 
+      value = state;
+  }
 
   Future<void> listTasks(String id) async {
     emit(LoadingListTasksState());

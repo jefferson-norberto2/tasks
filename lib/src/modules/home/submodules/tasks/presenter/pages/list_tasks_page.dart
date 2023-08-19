@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../states/list_tasks_state.dart';
 import '../stores/list_tasks_store.dart';
 
-import '../../../../login/domain/entities/user.dart';
+import '../../../../../login/domain/entities/user.dart';
 
 class ListTasksPage extends StatefulWidget {
   final User user;
@@ -18,7 +18,10 @@ class _ListTasksPageState extends State<ListTasksPage> {
   @override
   void initState() {
     super.initState();
-    context.read<ListTasksStore>().listTasks(widget.user.id!);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ListTasksStore>().listTasks(widget.user.id!);    
+    });
+    
   }
 
   @override
@@ -29,13 +32,13 @@ class _ListTasksPageState extends State<ListTasksPage> {
 
     return SafeArea(child: Scaffold(
       appBar: AppBar(
-        title: Text('Tasks - ${widget.user.name}'),
+        backgroundColor: Colors.white,
         actions: [
           IconButton(
             onPressed: () {
-              Modular.to.pushNamed('/task_module/add_task', arguments: widget.user.id!).then((value) => context.read<ListTasksStore>().listTasks(widget.user.id!));
+              Modular.to.pushNamed('/home_module/task_module/add_task/', arguments: widget.user.id!).then((value) => context.read<ListTasksStore>().listTasks(widget.user.id!));
             },
-            icon: const Icon(Icons.add_chart_sharp),
+            icon: const Icon(Icons.add_chart_sharp, color: Colors.black),
           ),
         ],
       ),

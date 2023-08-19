@@ -37,7 +37,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-        title: const Text('Adicionar tarefa'),
+          backgroundColor: Colors.white,
+        title: const Text('Adicionar tarefa', style: TextStyle(color: Colors.black),),
         ),
         body: Column(
           children: [
@@ -78,7 +79,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
 
   void onExit(AddTaskStore store){
     store.onExitListTasksPage();
-    Modular.to.pop();
+    // Modular.to.pop();
   }
 
   void _showMyDialog({required String title, required String message, bool isAError = false, AddTaskStore? store}) {
