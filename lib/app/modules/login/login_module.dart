@@ -33,8 +33,8 @@ class LoginModule extends Module{
     i.add<ISendUser>(SendUser.new);
 
     //Stores
-    i.addSingleton(LoginStore.new);
-    i.addSingleton(RegisterUserStore.new);
+    i.addLazySingleton(LoginStore.new);
+    i.addLazySingleton(RegisterUserStore.new);
   }
 
   @override

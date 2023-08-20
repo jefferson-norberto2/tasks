@@ -15,44 +15,46 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Modular.to.pushNamed('/home_module/task_module/', arguments: widget.user);
-  }
-
-  @override
-  void dispose() {
-    debugPrint('dispose home');
-    super.dispose();
+      Modular.to.pushNamed('./task_module/', arguments: widget.user);
   }
 
   @override
   Widget build(BuildContext context) {
     final leading = SizedBox(
       width: MediaQuery.of(context).size.width * 0.3,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ListTile(
-            title: const Text('Tarefas'),
-            onTap: () => Modular.to.pushReplacementNamed('/home_module/task_module/', arguments: widget.user),
-          ),
-          ListTile(
-            title: const Text('Perfil'),
-            onTap: () => Modular.to.pushReplacementNamed('/home_module/perfil_module/', arguments: widget.user),
-          ),
-          CounterPage(userId: widget.user.id!)
-        ],
+      child: NavigationListener( builder: (context, child) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              title: const Text('Tarefas'),
+              onTap: () => Modular.to.pushReplacementNamed('../task_module/', arguments: widget.user),
+              selected: Modular.to.path.endsWith('/task_module/'),
+              ),
+            ListTile(
+              title: const Text('Perfil'),
+              onTap: () => Modular.to.pushReplacementNamed('../perfil_module/', arguments: widget.user),
+              selected: Modular.to.path.endsWith('/perfil_module/'),
+            ),
+            CounterPage(userId: widget.user.id!)
+          ],
+        );
+      }
       ),
     );
     
-    return SafeArea(
+    return WillPopScope(
+      onWillPop: () async {
+        Modular.to.pushReplacementNamed('/', arguments: widget.user);
+        return true;
+      },
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
           title: Text("Bem-vindo ${widget.user.name}"),
           actions: [
             IconButton(
               icon: const Icon(Icons.logout),
-              onPressed: () => Modular.to.pop(),
+              onPressed: () => Modular.to.canPop() ? Modular.to.pop() : (){},
             )
           ],
         ),
@@ -62,6 +64,7 @@ class _HomePageState extends State<HomePage> {
           const Expanded(child: RouterOutlet()),
         ],
       ),
-    ));
+      ),
+    );
   }
 }

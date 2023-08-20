@@ -12,15 +12,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
-  @override
-  void initState(){
-    super.initState();
-  }
+  late LoginStore store;
 
   @override
   Widget build(BuildContext context) {
-    final store = context.watch<LoginStore>();
+    store = context.watch<LoginStore>();
     final state = store.value;
     final editTextName = TextEditingController(text: "");
     final editTextPassword = TextEditingController(text: "");
@@ -35,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
       });
     } else if (state is SucessLoginState){
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        Modular.to.pushNamed('/home_module/', arguments: state.user);
+        onExit(store, state.user);
       });
     }
 
@@ -93,9 +89,9 @@ class _LoginPageState extends State<LoginPage> {
       ),));
   }
 
-  void onExit(LoginStore store){
+  void onExit(LoginStore store, User user){
     store.onExitLoginPage();
-    Modular.to.pushNamed('/home');
+    Modular.to.pushNamed('/home_module/', arguments: user);
   }
 
   void _showMyDialog({required String title, required String message, bool isAError = false}) {
