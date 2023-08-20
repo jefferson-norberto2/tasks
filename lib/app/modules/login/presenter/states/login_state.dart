@@ -1,8 +1,6 @@
-
 import '../../domain/entities/user.dart';
 
-abstract class ILoginState {
-}
+abstract class ILoginState {}
 
 class SucessLoginState implements ILoginState {
   final User user;
@@ -10,13 +8,12 @@ class SucessLoginState implements ILoginState {
   SucessLoginState(this.user);
 }
 
-class EmptyLoginState extends ILoginState{
-}
+class EmptyLoginState extends ILoginState {}
 
-class ErrorLoginState extends ILoginState{
+class ErrorLoginState extends ILoginState {
   final String message;
 
   ErrorLoginState(this.message);
 }
 
-class LoadingLoginState extends ILoginState{}
+class LoadingLoginState extends ILoginState {}

@@ -14,8 +14,7 @@ import 'infra/datasources/send_user_datasource.dart';
 import 'infra/repositories/user_repository.dart';
 import 'presenter/stores/login_store.dart';
 
-class LoginModule extends Module{
-
+class LoginModule extends Module {
   @override
   void binds(i) {
     //Utils
@@ -41,6 +40,6 @@ class LoginModule extends Module{
   void routes(r) {
     r.child('/', child: (context) => const LoginPage());
     r.child('/register_user/', child: (context) => const RegisterUserPage());
-    r.module('/home_module/', module: HomeModule());  
-    }
+    r.module('/home_module/', module: HomeModule());
+  }
 }

@@ -2,11 +2,11 @@ import '../erros/erros.dart';
 import '../entities/user.dart';
 import '../repositories/user_repository.dart';
 
-abstract class IGetUser{
+abstract class IGetUser {
   Future<(IUserException, User?)> call(User user);
 }
 
-class GetUser implements IGetUser{
+class GetUser implements IGetUser {
   final IUserRepository _userRepository;
 
   GetUser(this._userRepository);

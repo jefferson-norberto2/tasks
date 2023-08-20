@@ -12,14 +12,13 @@ class RegisterUserPage extends StatefulWidget {
 }
 
 class _RegisterUserPageState extends State<RegisterUserPage> {
-
   @override
-  void initState(){
+  void initState() {
     super.initState();
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
   }
 
@@ -32,92 +31,102 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
 
     bool isLoading = state is LoadingRegisterUserState;
 
-    if (state is ErrorRegisterUserState){
+    if (state is ErrorRegisterUserState) {
       //To do a alert dialog
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _showMyDialog(title: "Error", message: state.message, isAError: true);
       });
-    } else if (state is SucessRegisterUserState){
+    } else if (state is SucessRegisterUserState) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _showMyDialog(title: "Success", message: "User Registered", store: store);
+        _showMyDialog(
+            title: "Success", message: "User Registered", store: store);
       });
-      
     }
 
-    return SafeArea(child: Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: editTextName,
-              decoration: const InputDecoration(
-                labelText: 'User',
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: editTextPassword,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                border: OutlineInputBorder(),
-              ),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    store.registerUser(User(name: editTextName.text, password: editTextPassword.text));
-                  },
-                  child: const Text('Cadastrar', style: TextStyle(color: Colors.green)),
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: editTextName,
+                decoration: const InputDecoration(
+                  labelText: 'User',
+                  border: OutlineInputBorder(),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    onExit(store);
-                  },
-                  child: const Text('Exit', style: TextStyle(color: Colors.red)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: editTextPassword,
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
                 ),
               ),
-            ],
-          ),
-          Visibility(
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      store.registerUser(User(
+                          name: editTextName.text,
+                          password: editTextPassword.text));
+                    },
+                    child: const Text('Cadastrar',
+                        style: TextStyle(color: Colors.green)),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      onExit(store);
+                    },
+                    child:
+                        const Text('Exit', style: TextStyle(color: Colors.red)),
+                  ),
+                ),
+              ],
+            ),
+            Visibility(
               visible: isLoading,
               child: const CircularProgressIndicator(),
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
-    ),
     );
   }
 
-  void onExit(RegisterUserStore store){
+  void onExit(RegisterUserStore store) {
     store.onExiteRegisterUser();
     Modular.to.pop();
   }
 
-  void _showMyDialog({required String title, required String message, bool isAError = false, RegisterUserStore? store}) {
+  void _showMyDialog(
+      {required String title,
+      required String message,
+      bool isAError = false,
+      RegisterUserStore? store}) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(title, style: TextStyle(color: isAError ? Colors.red : Colors.black)),
+          title: Text(title,
+              style: TextStyle(color: isAError ? Colors.red : Colors.black)),
           content: Text(message),
           actions: [
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                if (isAError == false){
+                if (isAError == false) {
                   onExit(store!);
                 }
               },

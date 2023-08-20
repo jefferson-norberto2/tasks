@@ -20,22 +20,23 @@ class _LoginPageState extends State<LoginPage> {
     final state = store.value;
     final editTextName = TextEditingController(text: "");
     final editTextPassword = TextEditingController(text: "");
-    
+
     Widget child = Container();
 
-    if (state is LoadingLoginState){
+    if (state is LoadingLoginState) {
       child = const CircularProgressIndicator();
-    } else if (state is ErrorLoginState){
+    } else if (state is ErrorLoginState) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _showMyDialog(title: "Error", message: state.message, isAError: true);
       });
-    } else if (state is SucessLoginState){
+    } else if (state is SucessLoginState) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         onExit(store, state.user);
       });
     }
 
-    return SafeArea(child: Scaffold(
+    return SafeArea(
+        child: Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -63,11 +64,10 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                fixedSize: const Size(200, 40)
-              ),
+              style: ElevatedButton.styleFrom(fixedSize: const Size(200, 40)),
               onPressed: () {
-                store.login(User(name: editTextName.text, password: editTextPassword.text));
+                store.login(User(
+                    name: editTextName.text, password: editTextPassword.text));
               },
               child: const Text('Entrar'),
             ),
@@ -75,9 +75,7 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                fixedSize: const Size(200, 40)
-              ),
+              style: ElevatedButton.styleFrom(fixedSize: const Size(200, 40)),
               onPressed: () {
                 Modular.to.pushNamed('/register_user/');
               },
@@ -86,20 +84,23 @@ class _LoginPageState extends State<LoginPage> {
           ),
           child
         ],
-      ),));
+      ),
+    ));
   }
 
-  void onExit(LoginStore store, User user){
+  void onExit(LoginStore store, User user) {
     store.onExitLoginPage();
     Modular.to.pushNamed('/home_module/', arguments: user);
   }
 
-  void _showMyDialog({required String title, required String message, bool isAError = false}) {
+  void _showMyDialog(
+      {required String title, required String message, bool isAError = false}) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(title, style: TextStyle(color: isAError ? Colors.red : Colors.black)),
+          title: Text(title,
+              style: TextStyle(color: isAError ? Colors.red : Colors.black)),
           content: Text(message),
           actions: [
             ElevatedButton(

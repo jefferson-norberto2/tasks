@@ -10,8 +10,8 @@ class AppWidget extends StatelessWidget {
     return MaterialApp.router(
       title: 'Tasks',
       theme: ThemeData(
-          primarySwatch: Colors.deepPurple
-        ),  
+        primarySwatch: Colors.deepPurple,
+      ),
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
     );

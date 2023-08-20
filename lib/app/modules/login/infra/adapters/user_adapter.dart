@@ -3,7 +3,7 @@ import '../protobuf/user.pb.dart' as proto;
 import '../../domain/entities/user.dart' as domain;
 
 class UserAdapter {
-  static domain.User fromProto(dynamic data){
+  static domain.User fromProto(dynamic data) {
     final user = proto.User();
     user.mergeFromBuffer(data);
     return domain.User(
@@ -13,7 +13,7 @@ class UserAdapter {
     );
   }
 
-  static Uint8List toProtoBuffer(domain.User user){
+  static Uint8List toProtoBuffer(domain.User user) {
     final id = user.id ?? "0";
 
     final buffer = proto.User()

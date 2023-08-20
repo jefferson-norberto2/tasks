@@ -15,27 +15,31 @@ class UserRepository extends IUserRepository {
 
   @override
   Future<(IUserException, User?)> getUser(User user) async {
-    
-    try{
+    try {
       final request = UserAdapter.toProtoBuffer(user);
       final response = await _getUserDatasource.getUser(request);
       final userResponse = UserAdapter.fromProto(response);
       return (const UserException('No exception'), userResponse);
     } catch (e) {
-      return (const UserException("Problem to get user in repository implementation"), null);
+      return (
+        const UserException("Problem to get user in repository implementation"),
+        null
+      );
     }
   }
-  
+
   @override
   Future<(IUserException, bool)> sendUser(User user) async {
-    try{
+    try {
       final request = UserAdapter.toProtoBuffer(user);
       final sucess = await _sendUserDatasource.sendUser(request);
       final decoded = jsonDecode(sucess);
       return (const UserException('No exception'), decoded['user'] as bool);
     } catch (e) {
-      return (const UserException("Problem to send user, check connection"), false);
+      return (
+        const UserException("Problem to send user, check connection"),
+        false
+      );
     }
   }
-  
 }
