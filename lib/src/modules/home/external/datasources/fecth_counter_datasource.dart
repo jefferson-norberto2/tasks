@@ -1,4 +1,4 @@
-import 'package:tasks/src/modules/home/submodules/counter/my_socket.dart';
+import 'package:tasks/src/modules/home/external/my_socket.dart';
 
 abstract class IFetchCounterDatasource{
   void fetchCounter(int userId);

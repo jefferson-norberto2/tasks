@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tasks/src/modules/home/submodules/counter/external/datasources/fecth_counter_datasource.dart';
-import 'package:tasks/src/modules/home/submodules/counter/external/datasources/listen_counter_datasource.dart';
-import 'package:tasks/src/modules/home/submodules/counter/presenter/state/counter_state.dart';
+import 'package:tasks/src/modules/home/external/datasources/fecth_counter_datasource.dart';
+import 'package:tasks/src/modules/home/external/datasources/listen_counter_datasource.dart';
+import 'package:tasks/src/modules/home/presenter/states/counter_state.dart';
 
 class CounterStore extends ValueNotifier<ICounterState> {
   final IFetchCounterDatasource fetchCounterDatasource;
