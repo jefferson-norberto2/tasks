@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
       },
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text("Bem-vindo ${widget.user.name}"),
           actions: [
             IconButton(
