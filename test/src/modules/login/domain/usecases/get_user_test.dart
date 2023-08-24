@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:tasks/src/modules/login/domain/entities/user.dart';
-import 'package:tasks/src/modules/login/domain/erros/erros.dart';
-import 'package:tasks/src/modules/login/domain/repositories/user_repository.dart';
-import 'package:tasks/src/modules/login/domain/usecases/get_user.dart';
+import 'package:tasks/app/modules/login/domain/entities/user.dart';
+import 'package:tasks/app/modules/login/domain/erros/erros.dart';
+import 'package:tasks/app/modules/login/domain/repositories/user_repository.dart';
+import 'package:tasks/app/modules/login/domain/usecases/get_user.dart';
 
 class MockUserRepository extends Mock implements IUserRepository {}
 

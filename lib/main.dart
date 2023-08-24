@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:tasks/src/app_module.dart';
-import 'package:tasks/src/app_widget.dart';
+import 'package:tasks/app/app_module.dart';
+import 'package:tasks/app/app_widget.dart';
 
 void main() {
-  runApp(ModularApp(module: AppModule(), child: const AppWidget()));
+  runApp(ModularApp(
+    module: AppModule(),
+    child: const AppWidget(),
+  ));
 }
