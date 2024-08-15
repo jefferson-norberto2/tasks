@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final leading = SizedBox(
-      width: MediaQuery.of(context).size.width * 0.3,
+      width: MediaQuery.of(context).size.width * 0.2,
       child: NavigationListener(builder: (context, child) {
         return Column(
           mainAxisSize: MainAxisSize.min,
