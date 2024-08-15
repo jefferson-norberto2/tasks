@@ -1,13 +1,13 @@
-syntax = "proto3";
+syntax = "proto2";
 
 message Task{
-    string id = 1;
-    string task = 2;
-    string user_id = 3;
+    required string id = 1;
+    required string task = 2;
+    required string user_id = 3;
 }
 
 message User{
-    string id = 1;
-    string name = 2;
+    required string id = 1;
+    required string name = 2;
     repeated Task tasks = 3;
 }
