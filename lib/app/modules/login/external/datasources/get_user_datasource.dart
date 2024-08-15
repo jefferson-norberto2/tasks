@@ -11,7 +11,7 @@ class GetUserDatasource implements IGetUserDatasource {
   @override
   Future<Uint8List> getUser(Uint8List userProto) async {
     try {
-      final uri = Uri.parse('http://localhost:5000/login');
+      final uri = Uri.parse('http://localhost:10100/login');
       final request = await httpClient.post(uri, body: userProto);
       return request.bodyBytes;
     } catch (e, s) {

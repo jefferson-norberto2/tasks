@@ -11,7 +11,7 @@ class SendUserDatasource implements ISendUserDatasource {
   @override
   Future<String> sendUser(Uint8List userProto) async {
     try {
-      final uri = Uri.parse('http://localhost:5000/sign_up_user');
+      final uri = Uri.parse('http://localhost:10100/sign_up_user');
       final request = await httpClient.post(uri, body: userProto);
       return request.body;
     } catch (e, s) {

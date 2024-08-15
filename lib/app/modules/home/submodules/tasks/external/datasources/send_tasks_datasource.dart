@@ -11,7 +11,7 @@ class SendTasksDatasource implements ISendTasksDatasource{
   @override
   Future<String> sendTask(Uint8List taskProto) async {
     try{
-      final uri = Uri.parse('http://localhost:5000//add_task');
+      final uri = Uri.parse('http://localhost:10100//add_task');
       final request = await httpClient.post(uri, body: taskProto);
       return request.body;
     } catch (e, s) {
