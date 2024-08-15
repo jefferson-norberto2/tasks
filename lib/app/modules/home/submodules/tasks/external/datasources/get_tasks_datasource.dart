@@ -12,7 +12,7 @@ class GetTasksDatasource implements IGetTasksDatasource{
   Future<Uint8List> getTasks(String id) async {
     try{
       final uri = Uri.parse('http://localhost:10100/get_tasks');
-      final request = await httpClient.post(uri, body: id);
+      final request = await httpClient.get(uri, headers: {'id': id});
       return request.bodyBytes; 
     } catch (e, s) {
       throw TasksDatasourceErros('Problem connecting to the server ${e.toString()}', s);
